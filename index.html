@@ -5,7 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Document</title>
+  <script defer src="./js/database.js"></script>
+  <script defer src="./js/index.js"></script>
+  <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Capstone Store</title>
 </head>
 <body>
   <div class="container-navegacao">
@@ -28,20 +35,20 @@
   
       <section>
         <ul class="listaProdutos">
-          
-            <li class="cardProduto">
-              <figure>
-                <img src="./img/camiseta_branca.svg" alt="camiseta">
-              </figure>
-              
-              <h5>Camisetas</h5>
-              <h3>Lightweight Jacket</h3>
-              <p class="paragrafo-description">Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...
-              </p>
-              <p class="paragrafo-valor">R$ 100.00</p>
-              <button class="button-adicionar">Adicionar ao carrinho</button>
-  
-          </li>
+          <!--           
+              <li class="cardProduto">
+                <figure>
+                  <img src="./img/camiseta_branca.svg" alt="camiseta">
+                </figure>
+                
+                <h5>Camisetas</h5>
+                <h3>Lightweight Jacket</h3>
+                <p class="paragrafo-description">Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...
+                </p>
+                <p class="paragrafo-valor">R$ 100.00</p>
+                <button class="button-adicionar">Adicionar ao carrinho</button>
+
+            </li>
           <li class="cardProduto">
             <figure>
               <img src="./img/mascara.svg" alt="máscara">
@@ -103,10 +110,10 @@
                     <button class="button-adicionar">Adicionar ao carrinho</button>
                   
       
-  
+   -->
         </ul>
         </section>
-        
+      
         
         <div>
           <section>
@@ -117,18 +124,13 @@
           </section>
             
             <section class="carrinho" >
-              <div class="carrinho-subtitulo">
-                <h2>Carrinho de Compras</h2>
-              </div>
-                 
-                  
-                    <ul>
-                      <div>
-                        <li>Carrinho Vazio</li>
-                        <li><a href="">Adicionar Item</a></li>
-                      </div>
-                    </ul>
-             
+              <h2>Carrinho de Compras</h2>
+              
+                <ul class="listaCarrinho"></ul>
+                <div class="total-carrinho">  
+                  <p>Quantidade:</p>
+                  <p>Total:</p>
+                </div>
             </section>       
                  
         </div>

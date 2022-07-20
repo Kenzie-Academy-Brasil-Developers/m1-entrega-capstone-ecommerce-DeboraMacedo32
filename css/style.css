@@ -90,25 +90,30 @@ table {
 }
 
 .container{
+  
   display: flex;
   padding: 40px;  
   margin : 0 auto;
 }
 .listaProdutos{
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
  
 }
 .cardProduto{
+  display: flex;
+  flex-direction: column;
   width: 292px;
   border: solid 1px #f5f5f5 ;
-  margin: 5px;
+  margin-bottom: 10px;
   
   
 }
 figure{
  background-color:  #f5f5f5  ;
+ overflow: hidden;
 
 }
 .cardProduto img{
@@ -160,6 +165,7 @@ figure{
   margin: 10px;
 }
 .paragrafo-valor{
+  
   width: 269px;
   height: 16px;
   font-weight: 600;
@@ -167,6 +173,8 @@ figure{
   line-height: 16px;
   color: #2E245E; 
   margin: 10px;
+  
+  
 }
 .button-adicionar{
   
@@ -198,7 +206,7 @@ figure{
 .campoBusca input{
   width: 246px;
   height: 50px;
-  color:#F5F5F5;
+  color:#121010;
   border: 1px solid #F5F5F5;
  
   
@@ -222,54 +230,52 @@ figure{
  
  
 }
-.carrinho-subtitulo{
-  display: flex;
-  height: 50px;
-  align-items: center;
-  background-color: #37268C;
-  justify-content: center;
-}
+
 .carrinho h2{
   
   color:#fff ;
   font-weight: 700;
   font-size: 18px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  background-color: #37268C;
+  justify-content: center
   
 }
 
 .carrinho ul{
-  display: flex;
-  flex-direction: column;
+  padding: 40px;
   background-color: #f5f5f5;
   width: 347px;
   height: 214px;
   line-height: 24px;
   overflow: scroll;
-  flex-wrap: wrap;
-  align-content: space-around;
-  align-items: flex-start;
-  justify-content: space-around;
+  
  
 }
-.carrinho ul li {
- font-size: 22px;
- font-weight: 700;
- line-height: 24px ;
- color: #292929;
+
+.listaCarrinho img{
+  width: 88px;
+  height: 92px;
 }
-.carrinho ul li a {
- font-weight: 400;
- font-size: 14px;
- line-height: 16px;
- color: #242424;
- margin-left: 30px;
+.listaCarrinho h3{
+  font-weight: 700;
+  color: #333333;
+
 }
-
-
-
+.listaCarrinho p {
+  color: #2E245E;
+  font-weight: 600;
+  font-size: 14px;
+}
+.listaCarrinho button{
+  border: none;
+  color: #242424;
+}
  
- 
-/* #total-carrinho{
+
+.total-carrinho{
   display: flex;
   flex-direction: column;
   background-color: #292929;
@@ -284,4 +290,4 @@ figure{
   align-items: flex-start;
   align-content: flex-start;
 }
- */
+ 
