@@ -1,6 +1,11 @@
 
 let secaoProdutos      = document.querySelector(".listaProdutos");
-let secaoCarrinho      = document.querySelector(".listaCarrinho")
+let secaoCarrinho      = document.querySelector(".listaCarrinho");
+let totalCarrinho      = document.querySelector(".valorCarrinho");
+let numCarrinho        = document.querySelector(".qtdCarrinho");
+
+
+
 
 function listarProdutos(arrProdutos,secao){
 
@@ -26,41 +31,51 @@ function listarProdutoCarrinho(arrCarrinho){
 
     let produtoCarrinho = arrCarrinho[i]
 
-    const novoCard = criarCardCarrinho(produtoCarrinho)
+    const novoCard = criarCardCarrinho(produtoCarrinho,i)
     secaoCarrinho.appendChild(novoCard);
+   
+    
   }
-  
+   
   
 }
 
-function criarCardCarrinho(produtoCarrinho){
+function criarCardCarrinho(produtoCarrinho,i){
   let imagemCarrinho       = produtoCarrinho.img
   let nomeProdutoCarrinho  = produtoCarrinho.nameItem
   let precoProdutoCarrinho = produtoCarrinho.value 
   
 
-  let li                   = document.createElement("li")
-  let figure               = document.createElement("figure")
-  let divCarrinho          = document.createElement("div")
-  let imgCarrinho          = document.createElement("img")
-  let nomePCarrinho        = document.createElement("h3")
-  let valorProdutoCarrinho = document.createElement("p")
-  let btnRemoverCarrinho   = document.createElement("button")
+  let li                   = document.createElement("li");
+  let figure               = document.createElement("figure");
+  let divCardCarrinho      = document.createElement("div");
+  let divFigure            = document.createElement("div");
+  let divCarrinho          = document.createElement("div");
+  let imgCarrinho          = document.createElement("img");
+  let nomePCarrinho        = document.createElement("h3");
+  let valorProdutoCarrinho = document.createElement("p");
+  let btnRemoverCarrinho   = document.createElement("button");
 
   imgCarrinho.src                              = imagemCarrinho
+  imgCarrinho.alt                              = nomeProdutoCarrinho              
   nomePCarrinho.innerText                      = nomeProdutoCarrinho
   valorProdutoCarrinho.innerText               = `R$ ${precoProdutoCarrinho}.00`
   btnRemoverCarrinho.innerText                 = `Remover Produto`
+  btnRemoverCarrinho.setAttribute("id",i)
   
+  divCarrinho.classList.add("arrumar-carrinho");
+  divFigure.classList.add("divFigure");
+  divCardCarrinho.classList.add("div-card-carrinho")
   
-  figure.appendChild(imgCarrinho)
-  li.appendChild(figure)
-  li.appendChild(divCarrinho)
-  divCarrinho.append(nomePCarrinho,valorProdutoCarrinho,btnRemoverCarrinho)
-  console.log(li)
-
+  figure.appendChild(imgCarrinho);
+  li.appendChild(divCardCarrinho);
+  li.appendChild(divFigure);
+  li.appendChild(figure);
+  li.appendChild(divCarrinho);
+  divCardCarrinho.append(divFigure,divCarrinho);
+  divFigure.appendChild(figure);
+  divCarrinho.append(nomePCarrinho,valorProdutoCarrinho,btnRemoverCarrinho);
   
-
   return li
 }
 
@@ -87,7 +102,7 @@ function criandoCard(produto){
   let tagSubtitulo          = document.createElement("h5");
   let tagTitulo             = document.createElement("h3");
   let tagPDescricao         = document.createElement("p");
-  let tagPreco              = document.createElement("p");
+  let tagPreco              = document.createElement("span");
   let tagBtnAdd             = document.createElement("button");
 
   tagLi.classList.add("cardProduto")
@@ -100,7 +115,7 @@ function criandoCard(produto){
   tagSubtitulo.innerText  = departamento
   tagTitulo.innerText     = nome
   tagPDescricao.innerText = descricao
-  tagPreco                = `R$ ${preco}.00`
+  tagPreco.innerText      = ` R$ ${preco}.00`
   tagBtnAdd.innerText     = `Adicionar ao carrinho`
   tagBtnAdd.setAttribute("id",id);
 
@@ -137,7 +152,18 @@ function adicionarCarrinho(produto){
 
   carrinhoCompras.push(produto)
   listarProdutoCarrinho(carrinhoCompras)
-  
+  let valorCarrinho = somaCarrinho();
+  totalCarrinho.innerText = valorCarrinho;
+  numCarrinho.innerText = carrinhoCompras.length
+}
+
+
+function somaCarrinho(){
+  let soma = 0;
+  for(let i =0; i < carrinhoCompras.length;i++){
+    soma += carrinhoCompras[i].value
+  }
+  return soma;
 }
 
 
@@ -145,7 +171,13 @@ function adicionarCarrinho(produto){
 
 
 
+
+
+
+
 secaoCarrinho.addEventListener("click", (event) => {
+
+  
   let btnRemove = event.target
   console.log(event.target)
   if (btnRemove.tagName == "BUTTON"){
@@ -153,6 +185,9 @@ secaoCarrinho.addEventListener("click", (event) => {
     console.log(index);
     carrinhoCompras.splice(index,1);
     listarProdutoCarrinho(carrinhoCompras)
+    let valorCarrinho = somaCarrinho();
+    totalCarrinho.innerText = valorCarrinho;
+    numCarrinho.innerText = carrinhoCompras.length
   }
 });
 
@@ -175,10 +210,17 @@ function busca(valorPesquisa){
   let resultBusca = [];
   
   for(let i = 0; i < data.length;i++ ){
-      if(valorPesquisa == data[i].nameItem){
+
+    let pesquisa    = valorPesquisa.toLowerCase()
+    let nomeProduto = data[i].nameItem.toLowerCase()
+      if(nomeProduto.includes(pesquisa)){
+        
         resultBusca.push(data[i])
       }
       
   }
   return resultBusca;
 }
+
+
+
