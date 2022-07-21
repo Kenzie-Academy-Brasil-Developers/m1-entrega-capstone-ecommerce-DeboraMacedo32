@@ -4,6 +4,36 @@ let secaoCarrinho      = document.querySelector(".listaCarrinho");
 let totalCarrinho      = document.querySelector(".valorCarrinho");
 let numCarrinho        = document.querySelector(".qtdCarrinho");
 
+let itemTodos          = document.querySelector(".menu-nav");
+
+itemTodos.addEventListener("click", function(event){
+ event.preventDefault()
+  
+  if(event.target.classList[0] == "menuAcessórios" ){
+   let filtroCategoria = data.filter(function(objeto){return objeto.tag[0] == "Acessórios"})
+   
+   listarProdutos(filtroCategoria,secaoProdutos)
+
+  }
+  
+  else if(event.target.classList[0] == "menuCalcados" ){ 
+    secaoProdutos.innerHTML=""
+    let tituloH1 = document.createElement("h1")
+    tituloH1.innerText = "Produto não encontrado!!!"
+    secaoProdutos.appendChild(tituloH1)
+    }
+
+  else if(event.target.classList[0] == "menuCamisetas" ){
+  let filtroCategoria = data.filter(function(objeto){return objeto.tag[0] == "Camisetas"})
+   
+  listarProdutos(filtroCategoria,secaoProdutos)}
+
+  else {
+    listarProdutos(data,secaoProdutos)
+    
+  }
+
+})
 
 
 
